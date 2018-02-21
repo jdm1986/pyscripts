@@ -19,5 +19,7 @@ cleaned = c[clean_col]
 cleaned2 = (cleaned.loc[cleaned['Role'].isin(['Owner', 'General Contractor', 'Apparent Low General Contractor',
                                               'Awarded General Contractor', 'Construction Manager'])])
 
+cleaned3 = cleaned2.sort_values(cleaned2.columns[0])
+
 now = datetime.datetime.now()
-cleaned2.to_csv(f"CDC {now.month}-{now.day}-{now.year}.csv", index=False)
+cleaned3.to_csv(f"CDC {now.month}-{now.day}-{now.year}.csv", index=False)
