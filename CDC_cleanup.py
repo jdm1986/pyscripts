@@ -18,21 +18,23 @@ clean_col = ['Project Name', 'Bid Date', 'Estimated Start Date', 'Type',
 cleaned = c[clean_col]
 
 # retain only values in Role that we are interested in seeing
-cleaned2 = (cleaned.loc[cleaned['Role'].isin(['Owner', 'General Contractor', 'Apparent Low General Contractor',
+cleaned = (cleaned.loc[cleaned['Role'].isin(['Owner', 'General Contractor', 'Apparent Low General Contractor',
                                               'Awarded General Contractor', 'Construction Manager'])])
 
 # remove values in Type column that have no interest to us
-cleaned3 = (cleaned2.loc[~cleaned['Type'].isin(['Renovation', 'Roof Replacement', 'Remodeling'])])
+cleaned = (cleaned.loc[~cleaned['Type'].isin(['Renovation', 'Roof Replacement', 'Remodeling'])])
 
 
 # convert Value column to float, sort by Value column
-cleaned3 = cleaned3.copy()
-cleaned3['Value'] = cleaned3['Value'].str.replace(',', '')
-cleaned3['Value'] = cleaned3['Value'].str.replace('$', '')
-cleaned3['Value'] = cleaned3['Value'].astype("float")
-cleaned4 = cleaned3.sort_values("Value")
+cleaned = cleaned.copy()
+cleaned['Value'] = cleaned['Value'].str.replace(',', '')
+cleaned['Value'] = cleaned['Value'].str.replace('$', '')
+cleaned['Value'] = cleaned['Value'].astype("float")
+cleaned = cleaned.sort_values("Value")
+
+for value in cleaned['Value']:
+    value = ('${0:,.0f}'.format(value))
 
 
-cleaned4.to_csv(f"../../../Desktop/Local/Monday Meeting/CDC {now.month}-{now.day}-{now.year}.csv", index=False)
+cleaned.to_csv(f"../../../Desktop/Local/Monday Meeting/CDC {now.month}-{now.day}-{now.year}.csv", index=False)
 
-# c.to_csv(f"../../../Desktop/Local/Monday Meeting/CDC {now.month}-{now.day}-{now.year}.csv", index=True)
