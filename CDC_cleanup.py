@@ -8,10 +8,6 @@ c = pd.read_csv("../../../Desktop/Local/Monday Meeting/CDC.csv", index_col=False
 
 c.set_index('Project Id')
 
-c.rename(columns={c.columns[25]: ''}).inplace = True
-c.rename(columns={c.columns[27]: ''}).inplace = True
-c.rename(columns={c.columns[28]: ''}).inplace = True
-
 c.to_csv("cdc_test.csv", index=False)
 
 clean_col = ['Project Name', 'Bid Date', 'Estimated Start Date', 'Type',
