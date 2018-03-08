@@ -18,7 +18,7 @@ clean_col = ['Project Name', 'Bid Date', 'Estimated Start Date', 'Type',
 cleaned = c[clean_col]
 
 # retain only values in Role that we are interested in seeing
-cleaned = (cleaned.loc[cleaned['Role'].isin(['Owner', 'General Contractor', 'Apparent Low General Contractor',
+cleaned = (cleaned.loc[cleaned['Role'].isin(['General Contractor', 'Apparent Low General Contractor',
                                               'Awarded General Contractor', 'Construction Manager'])])
 
 cleaned = (cleaned.loc[~cleaned['Type'].isin(['Renovation', 'Roof Replacement', 'Remodeling'])])
