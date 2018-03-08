@@ -21,7 +21,6 @@ cleaned = c[clean_col]
 cleaned = (cleaned.loc[cleaned['Role'].isin(['Owner', 'General Contractor', 'Apparent Low General Contractor',
                                               'Awarded General Contractor', 'Construction Manager'])])
 
-# remove values in Type column that have no interest to us
 cleaned = (cleaned.loc[~cleaned['Type'].isin(['Renovation', 'Roof Replacement', 'Remodeling'])])
 
 
